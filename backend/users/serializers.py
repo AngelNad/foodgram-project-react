@@ -48,10 +48,10 @@ class SubscribeUserSerializer(serializers.ModelSerializer):
         if Subscribe.objects.filter(user=user,
                                     subscribing__id=subscribing_id).exists():
             raise serializers.ValidationError(
-                    'Вы уже подписаны на этого пользователя')
+                'Вы уже подписаны на этого пользователя')
         if user.id == subscribing_id:
             raise serializers.ValidationError(
-                    'Нельзя подписаться на самого себя')
+                'Нельзя подписаться на самого себя')
         return data
 
 

@@ -39,7 +39,7 @@ class Recipe(models.Model):
             MinValueValidator(1,
                               'Минимальное время приготовления 1 мин'
                               )
-                    ],
+        ],
         verbose_name='Время приготовления (в минутах)',
     )
 
