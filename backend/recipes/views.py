@@ -7,7 +7,7 @@ from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 
-from .filters import RecipeFilter
+from .filters import RecipeFilter, IngredientsFilter
 from .models import (Favorite, Ingredient, Recipe, RecipeIngredient,
                      ShoppingCart, Tag)
 from .permissions import IsAuthorOrAdmin
@@ -41,7 +41,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if request.method == "POST":
             if Favorite.objects.filter(user=user, recipe=recipe).exists():
                 return Response(
-                    {"error": "This recipe already in favorite"},
+                    {"error": "Вы уже добавили рецепт в избранное"},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
             favorite = Favorite.objects.create(user=user, recipe=recipe)
@@ -68,7 +68,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if request.method == "POST":
             if ShoppingCart.objects.filter(user=user, recipe=recipe).exists():
                 return Response(
-                    {"error": "This recipe already in shopping cart"},
+                    {"error": "Вы уже добавили рецепт в список покупок"},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
             shopping_cart = ShoppingCart.objects.create(
@@ -106,7 +106,8 @@ class IngredientsViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = (filters.SearchFilter,)
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = IngredientsFilter
     search_fields = ('^name',)
 
 

@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, RegexValidator
 from django.db import models
 
 User = get_user_model()
@@ -57,9 +57,17 @@ class Tag(models.Model):
         verbose_name='Название тега',
         db_index=True,
     )
-    color = models.SlugField(
+    color = models.CharField(
+        'Цвет',
+        help_text=(
+            'Введите код цвета в шестнадцетиричном формате (#ABCDEF)'),
         max_length=7,
-        verbose_name='Цвет в HEX'
+        unique=True,
+        validators=(
+            RegexValidator(
+                regex='^#[a-fA-F0-9]{6}$', code='wrong_hex_code',
+                message='Неправильный формат цвета'),
+        )
     )
     slug = models.SlugField(
         max_length=200,
@@ -112,9 +120,6 @@ class RecipeIngredient(models.Model):
         validators=(MinValueValidator(1),)
     )
 
-    def __str__(self):
-        return 'Ингредиент в рецепте'
-
 
 class RecipeTag(models.Model):
     recipe = models.ForeignKey(
@@ -129,9 +134,6 @@ class RecipeTag(models.Model):
         related_name='recipe_tag',
         verbose_name='Тег рецепта',
     )
-
-    def __str__(self):
-        return "Тег в рецепте"
 
 
 class Favorite(models.Model):

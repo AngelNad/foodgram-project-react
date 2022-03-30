@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 
-from .models import Recipe, Tag
+from .models import Ingredient, Recipe, Tag
 
 
 class RecipeFilter(filters.FilterSet):
@@ -31,3 +31,11 @@ class RecipeFilter(filters.FilterSet):
     class Meta:
         model = Recipe
         fields = ['author', 'tags', 'is_in_shopping_cart', 'is_favorited']
+
+
+class IngredientsFilter(filters.FilterSet):
+    name = filters.CharFilter(field_name='name', lookup_expr='istartswith')
+
+    class Meta:
+        model = Ingredient
+        fields = ['name']

@@ -9,7 +9,7 @@ class Command(BaseCommand):
     help = 'Load csv data'
 
     def handle(self, *args, **kwargs):
-        with open('D:\Dev/foodgram-project-react/data/ingredients.csv',
+        with open('./data/ingredients.csv',
                   newline='', encoding='UTF-8') as file:
             file_reader = csv.reader(file)
             for row in file_reader:
