@@ -24,7 +24,7 @@ DB_PORT=5432
 
 ### Приложение работает на Docker-compose
 Образ проекта на DockerHub **angelnad/foodgram-project** <br>
-Образ для фронтенда на DockerHub **angelnad/foodgram-project** <br>
+Образ для фронтенда на DockerHub **angelnad/foodgram-frontend** <br>
 
 _**Workflow status badge:**_<br>
 ![Django-app-foodgram-project workflow](https://github.com/AngelNad/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
