@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from rest_framework import serializers
+from recipes.models import Recipe
 
 from .models import Subscribe
-from recipes.models import Recipe
 
 User = get_user_model()
 
