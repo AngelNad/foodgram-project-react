@@ -1,8 +1,7 @@
 import csv
 
 from django.core.management import BaseCommand
-
-from backend.recipes.models import Ingredient
+from recipes.models import Ingredient
 
 
 class Command(BaseCommand):
