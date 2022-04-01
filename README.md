@@ -36,7 +36,7 @@ _Команды для запуска приложения в контейнер
 docker-compose up
 ```
 У вас развернётся проект с базой данных Postgres. <br>
-Чтобы проверить его работу, перейдите по ссылке http://127.0.0.1:8000/admin/
+Чтобы проверить его работу, перейдите по ссылке http://51.250.31.38/admin/
 - В папке /infra с файлом docker-compose.yaml создайте суперпользователя:
 ```
 docker-compose exec backend python manage.py createsuperuser
