@@ -17,16 +17,20 @@ class RecipeFilter(filters.FilterSet):
         field_name='is_favorited', method='filter'
     )
 
+    def filter(self, queryset, name, value):
+        if name == 'is_in_shopping_cart' and value:
+            queryset = queryset.filter(
+                shopping_cart__user=self.request.user
+            )
+        if name == 'is_favorited' and value:
+            queryset = queryset.filter(
+                favorite__user=self.request.user
+            )
+        return queryset
+
     class Meta:
         model = Recipe
         fields = ['author', 'tags', 'is_in_shopping_cart', 'is_favorited']
-
-    def filter(self, queryset, name, value):
-        if name == 'is_in_shopping_cart' and value:
-            queryset = queryset.filter(shopping_cart__user=self.request.user)
-        if name == 'is_favorited' and value:
-            queryset = queryset.filter(favorite__user=self.request.user)
-        return queryset
 
 
 class IngredientsFilter(filters.FilterSet):
