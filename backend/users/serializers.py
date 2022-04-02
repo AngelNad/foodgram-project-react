@@ -4,7 +4,7 @@ from djoser.serializers import UserCreateSerializer, UserSerializer
 from rest_framework import serializers
 
 from recipes.models import Recipe  # isort:skip
-from .models import Subscribe
+from .models import Subscribe # isort:skip
 
 User = get_user_model()
 

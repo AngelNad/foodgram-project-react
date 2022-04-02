@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 from users.serializers import CustomUserSerializer  # isort:skip
 from .models import (Favorite, Ingredient, Recipe, RecipeIngredient,
-                     ShoppingCart, Tag)
+                     ShoppingCart, Tag) # isort:skip
 
 
 class IngredientSerializer(serializers.ModelSerializer):
