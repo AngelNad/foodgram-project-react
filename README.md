@@ -14,7 +14,7 @@
 
 ### Заполнение файла .env
 
-_Создайте в директории /infra файл .env с переменными окружения для работы с базой данных со значениями:_
+_Создайте в директории /infra файл .env с переменными окружения для работы с базой данных со значениями:_<br>
 DB_ENGINE=django.db.backends.postgresql<br>
 DB_NAME=postgres <br>
 POSTGRES_USER=postgres <br>
@@ -25,6 +25,11 @@ DB_PORT=5432
 ### Приложение работает на Docker-compose
 Образ проекта на DockerHub **angelnad/foodgram-project** <br>
 Образ для фронтенда на DockerHub **angelnad/foodgram-frontend** <br>
+
+_Данные по администратору для проверки:_<br>
+Логин: admin<br>
+e-mail: admin@admin.ru<br>
+пароль: admin<br>
 
 _**Workflow status badge:**_<br>
 ![Django-app-foodgram-project workflow](https://github.com/AngelNad/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
