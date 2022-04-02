@@ -2,7 +2,7 @@ import csv
 
 from django.core.management import BaseCommand
 
-from recipes.models import Ingredient #isort:skip
+from recipes.models import Ingredient  # isort:skip
 
 
 class Command(BaseCommand):
