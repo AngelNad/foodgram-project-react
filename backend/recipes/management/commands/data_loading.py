@@ -1,7 +1,8 @@
 import csv
 
 from django.core.management import BaseCommand
-from recipes.models import Ingredient
+
+from recipes.models import Ingredient #isort:skip
 
 
 class Command(BaseCommand):
