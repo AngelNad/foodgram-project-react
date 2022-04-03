@@ -29,7 +29,7 @@ services:
   nginx:
     image: nginx:1.19.3
     ports:
-      - "80:80"
+      - '80:80'
     volumes:
       - static_backend_value:/var/html/static_backend/
       - media_value:/var/html/media/

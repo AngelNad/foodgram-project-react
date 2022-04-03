@@ -108,7 +108,7 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        verbose_name="Рецепт",
+        verbose_name='Рецепт',
     )
     ingredient = models.ForeignKey(
         Ingredient,
@@ -125,8 +125,8 @@ class RecipeTag(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name="recipe_tag",
-        verbose_name="Рецепт",
+        related_name='recipe_tag',
+        verbose_name='Рецепт',
     )
     tag = models.ForeignKey(
         Tag,

@@ -4,6 +4,7 @@ from djoser.serializers import UserCreateSerializer, UserSerializer
 from rest_framework import serializers
 
 from recipes.models import Recipe  # isort:skip
+from foodgram.settings import RECIPES_LIMIT  # isort:skip
 from .models import Subscribe  # isort:skip
 
 User = get_user_model()
@@ -81,7 +82,7 @@ class SubscribeViewSerializer(serializers.ModelSerializer):
 
     def get_recipes(self, obj):
         recipes_limit = int(self.context['request'].GET.get(
-            'recipes_limit', 10))
+            'recipes_limit', RECIPES_LIMIT))
         user = get_object_or_404(User, pk=obj.pk)
         recipes = Recipe.objects.filter(author=user)[:recipes_limit]
 

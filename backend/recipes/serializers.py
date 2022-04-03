@@ -2,9 +2,8 @@ from drf_extra_fields.fields import Base64ImageField
 from rest_framework import serializers
 
 from users.serializers import CustomUserSerializer  # isort:skip
-from .models import (Favorite, Ingredient,  # isort:skip
-                     Recipe, RecipeIngredient,  # isort:skip
-                     ShoppingCart, Tag)  # isort:skip
+from .models import (Favorite, Ingredient, Recipe,  # isort:skip
+                     RecipeIngredient, ShoppingCart, Tag)
 
 
 class IngredientSerializer(serializers.ModelSerializer):
@@ -75,7 +74,7 @@ class AddRecipeSerializer(serializers.ModelSerializer):
         ingredients = self.initial_data.get('ingredients')
         if not ingredients:
             raise serializers.ValidationError(
-                'Нужно выбрать минимум 1 ингридиент!')
+                'Нужно выбрать минимум 1 ингредиент!')
         for ingredient in ingredients:
             if int(ingredient['amount']) <= 0:
                 raise serializers.ValidationError(
