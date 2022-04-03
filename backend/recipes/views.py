@@ -61,7 +61,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
                       FavoriteSerializer,
                       "Вы уже добавили рецепт в избранное",
                       user, recipe, request)
-        elif request.method == "DELETE":
+        if request.method == "DELETE":
             self.delete(Favorite, user, recipe)
 
     @action(
@@ -78,7 +78,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
                       ShoppingCartSerializer,
                       "Вы уже добавили рецепт в список покупок",
                       user, recipe, request)
-        elif request.method == "DELETE":
+        if request.method == "DELETE":
             self.delete(ShoppingCart, user, recipe)
 
     @action(
